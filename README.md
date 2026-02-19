@@ -1,5 +1,6 @@
 # THIS AUTOSPLITTER WAS NOT MADE BY MYSELF. ALL CREDIT GOES TO BMN THE ORIGINAL DEVELOPER
 
+
 # livesplit_asl_mgs1
 A LiveSplit autosplitter for Metal Gear Solid on PC and emulator
 
