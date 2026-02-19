@@ -1,5 +1,5 @@
 # THIS AUTOSPLITTER WAS NOT MADE BY MYSELF. ALL CREDIT GOES TO BMN THE ORIGINAL DEVELOPER
-This version has been edited by myself to work with Metal Gear Solid Master Collection V3.0.0
+This version has been edited by myself to work with Metal Gear Solid Master Collection v3.0.0
 
 
 # livesplit_asl_mgs1
