@@ -5,6 +5,9 @@
 /*  * BizHawk  * DuckStation  * ePSXe  * Mednafen   */
 /*  * Retroarch (Beetle PSX)                        */
 /*                                                  */
+/* Edit and fixed by Knowlesy to work with          */
+/* Master Collection Update v3.0.0                  */
+/*                                                  */
 /* Game Compatibility:                              */
 /*  * Metal Gear Solid (PSX EN/ES/US/JP)            */
 /*  * Metal Gear Solid Integral (PSX JP)            */
@@ -3345,3 +3348,4 @@ shutdown {
 }
 
 // shutdown END
+
