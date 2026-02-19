@@ -3,8 +3,8 @@ A LiveSplit autosplitter for Metal Gear Solid on PC and emulator
 
 ⚠ This is version 3 of the autosplitter. 
 
-[Click here for version 2 (post-May 2021).](https://github.com/bmn/livesplit_asl_mgs1/blob/master)
-Click here for version 1 (pre-May 2021), (https://github.com/bmn/livesplit_asl_mgs1/tree/v1) which also supports emulators.
+[Click here for version 2 (post-May 2021).](https://github.com/bmn/livesplit_asl_mgs1/blob/master) which also supports emulators.
+[Click here for version 1 (pre-May 2021).](https://github.com/bmn/livesplit_asl_mgs1/tree/v1) which also supports emulators.
 
 
 ⚠ **Do not** use a *Scriptable Auto Splitter* and an activated *Splits Editor autosplitter* at the same time - this will cause repeated splits.
