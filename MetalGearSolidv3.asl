@@ -1,5 +1,5 @@
 /****************************************************/
-/* Metal Gear Solid Autosplitter 2.3                */
+/* Metal Gear Solid Autosplitter 3.0                */
 /*                                                  */
 /* Emulator Compatibility:                          */
 /*  * BizHawk  * DuckStation  * ePSXe  * Mednafen   */
@@ -3343,4 +3343,5 @@ shutdown {
 
   if (V.DebugForm != null) V.DebugForm.Dispose();
 }
+
 // shutdown END
