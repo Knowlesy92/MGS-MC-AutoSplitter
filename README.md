@@ -1,5 +1,10 @@
 # THIS AUTOSPLITTER WAS NOT MADE BY MYSELF. ALL CREDIT GOES TO BMN THE ORIGINAL DEVELOPER
 This version has been edited by myself to work with Metal Gear Solid Master Collection v3.0.0
+This is not 100% fixed, there are still areas that need fixing.
+
+⚠ Change Notes:
+- Autosplits are now working
+- Alerts are working
 
 
 # livesplit_asl_mgs1
