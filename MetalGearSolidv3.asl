@@ -2399,7 +2399,7 @@ init {
       string productName = null;
       string strHeader = null;
 
-      int[] offsetsToCheck = new int[] { 0x10000, 0x19F9948 };
+      int[] offsetsToCheck = new int[] { 0x10000, 0xD8B7A };
 
       foreach (int offset in offsetsToCheck) {
         byte[] memHeader = mem.ReadBytes((IntPtr)F.Addr(offset), 0x30);
