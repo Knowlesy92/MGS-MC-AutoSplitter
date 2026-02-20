@@ -5,6 +5,7 @@ This is not 100% fixed, there are still areas that need fixing.
 ⚠ Change Notes:
 - Autosplits are now working
 - Alerts are working
+- Fixed ScoreHours - This means the splits will complete at end game
 
 
 # livesplit_asl_mgs1
