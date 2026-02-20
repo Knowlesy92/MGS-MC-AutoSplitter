@@ -235,7 +235,7 @@ startup {
       { "Life",             0xB4DCE },
       { "MaxLife",          0xB4DD0 },
       { "EquippedItem",     0xB4ED0 },
-      { "ScoreHours",       0x11B084 },
+      { "ScoreHours",       0xDC7D8 },
     } },
     // JP Integral
     { "SLPM-86247", new Dictionary<string, int>() {
