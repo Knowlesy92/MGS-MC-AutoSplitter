@@ -2399,23 +2399,24 @@ init {
       string productName = null;
       string strHeader = null;
 
-      if (vars.Platform == "MGS Master Collection (PC)")
-      {
-          productCode = "SLPM-86111";
-      }
+      int[] offsetsToCheck = new int[] { 0x10000, 0x19F9948 };
 
-      byte[] memHeader = mem.ReadBytes((IntPtr)F.Addr(0x10000), 0x30);
-      if (memHeader != null) {
-        strHeader = System.Text.Encoding.UTF8.GetString(memHeader);
-        
-        foreach (var v in D.Names.PSXVersion) {
-          if (strHeader.IndexOf(v.Key) != -1) {
-            productCode = v.Key;
-            break;
+      foreach (int offset in offsetsToCheck) {
+        byte[] memHeader = mem.ReadBytes((IntPtr)F.Addr(offset), 0x30);
+        if (memHeader != null) {
+          strHeader = System.Text.Encoding.UTF8.GetString(memHeader);
+          
+          foreach (var v in D.Names.PSXVersion) {
+            if (strHeader.IndexOf(v.Key) != -1) {
+              productCode = v.Key;
+              break;
+            }
           }
         }
+        if (productCode != null) break;
       }
 
+      // CRITICAL: This safety catch prevents the NullReferenceException
       if (productCode == null) {
         G.ProductCode = null;
         G.OldBaseAddress = G.BaseAddress;
