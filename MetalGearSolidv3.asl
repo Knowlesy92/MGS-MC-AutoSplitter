@@ -2213,7 +2213,7 @@ init {
         F.WriteFile(V.MajorSplitsFile, string.Join("\n", enabledMajors), false);
                 
         string splitFileWrapper = @"<?xml version=""1.0"" encoding=""UTF-8""?>
-<Run version=""1.7.0"">
+<Run version=""1.8.0"">
   <GameIcon />
   <GameName>Metal Gear Solid</GameName>
   <CategoryName>{0}</CategoryName>
@@ -2421,7 +2421,7 @@ init {
           }
         }
       }
-
+      
       if (productCode == null) {
         G.ProductCode = null;
         G.OldBaseAddress = G.BaseAddress;
