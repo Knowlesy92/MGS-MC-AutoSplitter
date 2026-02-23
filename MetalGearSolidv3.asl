@@ -5,8 +5,9 @@
 /*  * BizHawk  * DuckStation  * ePSXe  * Mednafen   */
 /*  * Retroarch (Beetle PSX)                        */
 /*                                                  */
-/* Edit and fixed by Knowlesy to work with          */
+/* Edit and fixed by Knowlesy to work with:         */
 /* Master Collection Update v3.0.0                  */
+/* Duckstation 2023                                 */
 /*                                                  */
 /* Game Compatibility:                              */
 /*  * Metal Gear Solid (PSX EN/ES/US/JP)            */
@@ -564,6 +565,11 @@ startup {
     {  1, "Normal" },
     {  2, "Hard" },
     {  3, "Extreme" },
+  };
+
+  // Menu IDs
+  D.Sets.Menus = new HashSet<string>() {
+    "init", "opening", "brf", "title",
   };
 
   
@@ -2207,7 +2213,7 @@ init {
         F.WriteFile(V.MajorSplitsFile, string.Join("\n", enabledMajors), false);
                 
         string splitFileWrapper = @"<?xml version=""1.0"" encoding=""UTF-8""?>
-<Run version=""1.7.0"">
+<Run version=""1.8.0"">
   <GameIcon />
   <GameName>Metal Gear Solid</GameName>
   <CategoryName>{0}</CategoryName>
@@ -2399,24 +2405,23 @@ init {
       string productName = null;
       string strHeader = null;
 
-      int[] offsetsToCheck = new int[] { 0x10000, 0xD8B7A };
-
-      foreach (int offset in offsetsToCheck) {
-        byte[] memHeader = mem.ReadBytes((IntPtr)F.Addr(offset), 0x30);
-        if (memHeader != null) {
-          strHeader = System.Text.Encoding.UTF8.GetString(memHeader);
-          
-          foreach (var v in D.Names.PSXVersion) {
-            if (strHeader.IndexOf(v.Key) != -1) {
-              productCode = v.Key;
-              break;
-            }
-          }
-        }
-        if (productCode != null) break;
+      if (vars.Platform == "MGS Master Collection (PC)")
+      {
+          productCode = "SLPM-86111";
       }
 
-      // CRITICAL: This safety catch prevents the NullReferenceException
+      byte[] memHeader = mem.ReadBytes((IntPtr)F.Addr(0x10000), 0x30);
+      if (memHeader != null) {
+        strHeader = System.Text.Encoding.UTF8.GetString(memHeader);
+        
+        foreach (var v in D.Names.PSXVersion) {
+          if (strHeader.IndexOf(v.Key) != -1) {
+            productCode = v.Key;
+            break;
+          }
+        }
+      }
+      
       if (productCode == null) {
         G.ProductCode = null;
         G.OldBaseAddress = G.BaseAddress;
@@ -2912,7 +2917,12 @@ init {
 
   if ((processName.Length > 10) && (processName.Substring(0, 11) == "duckstation")) {
     emu.CheckMappedMemory = true;
+    emu.RegionSize = (uint)0x800000;
     vars.Platform = "DuckStation";
+
+    var emu2 = New.EmulatorSpec();
+    emu2.CheckMappedMemory = true;
+    G.Emulators.Add(emu2);
   }
   else switch (processName) {
     case "metal gear solid":
@@ -3151,11 +3161,14 @@ reset {
   var D = vars.D; var G = D.Game; var M = D.Mem;
 
   var Loc = M["Location"];
+  if (!Loc.Changed) return false;
+  
+  var Menus = D.Sets.Menus;
   if (G.VRMissions)
-    return ( (Loc.Changed) && (Loc.Current.Equals("vrtitle")) );
+    return (Loc.Current.Equals("vrtitle"));
 
-  var Menu = M["InMenu"];
-  return ( (Menu.Changed) && (Menu.Current.Equals(1)) && (!M["Progress"].Current.Equals(294)) );
+  return ((Menus.Contains(Loc.Current)) && (!Menus.Contains(Loc.Old))
+    && (!M["Progress"].Current.Equals(294)) );
 }
 // reset END
 
@@ -3349,4 +3362,3 @@ shutdown {
 }
 
 // shutdown END
-
